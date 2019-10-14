@@ -27,9 +27,13 @@ class StudentPortalActivity : AppCompatActivity() {
 
 
     private fun portalItemClicked(portalItem : Portal) {
-        val builder = CustomTabsIntent.Builder()
-        val customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(this, Uri.parse(portalItem.uri))
+        try {
+            val builder = CustomTabsIntent.Builder()
+            val customTabsIntent = builder.build()
+            customTabsIntent.launchUrl(this, Uri.parse(portalItem.uri))
+        }catch (e: Exception) {
+            Toast.makeText(this, "faulty URL" ,Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun initViews() {
